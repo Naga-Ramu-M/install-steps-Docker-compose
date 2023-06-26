@@ -1,2 +1,32 @@
-# install-steps-Docker-compose
-install steps-Docker-compose
+centos/Fedora
+-------------
+1.Install required packages.
+    sudo yum install -y yum-utils \ device-mapper-persistent-data \ lvm2
+2.Use the following command to set up the stable repository.
+    sudo yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo
+3.Install the latest version of Docker CE.
+    sudo yum install docker-ce
+4. Start Docker.
+    sudo systemctl start docker
+5. docker --version
+-----------------------------
+Amazon Linux
+------------
+1. sudo yum update -y
+2. sudo yum install docker -y
+3. sudo systemctl start docker
+4. docker --version
+----------------------------
+Copy the appropriate docker-compose binary from GitHub:
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+
+NOTE: to get the latest version: sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+
+Fix permissions after download:
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+Verify success:
+
+docker-compose version
